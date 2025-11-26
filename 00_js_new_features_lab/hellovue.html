@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <button v-on:click="increment">{{count}}</button>
+
+    </div>
+
+</body>
+<script>
+  const { createApp, ref } = Vue; // de-structuring
+
+  const app = createApp({
+    setup() {
+      const message = ref('Hello vue!');
+      console.log(message);
+      console.log(message.value);
+      const count = ref(0);
+      const increment = () => {
+        count.value++;
+      }
+      return {
+        message, 
+        count, 
+        increment,
+      };
+    }
+  });
+
+  app.mount('#app')
+</script>
+</html>
